@@ -11,10 +11,10 @@
     state: present
 
 - name: Configure Nginx
- template:
-   src: default.j2
-   dest: "{{ nginx_config_file }}"
- notify: Restart Nginx
+  template:
+    src: default.j2
+    dest: "{{ nginx_config_file }}"
+  notify: Restart Nginx
 
 - name: Ensure Nginx is started and enabled
   service:
