@@ -1,0 +1,42 @@
+---
+# tasks file for openvpn
+
+- name: Install OpenVPN and Easy-RSA
+  apt:
+    name:
+      - openvpn
+      - easy-rsa
+    state: present
+    update_cache: yes
+
+- name: Set up Easy-RSA
+  command: make-cadir /etc/openvpn/easy-rsa
+  args:
+    creates: /etc/openvpn/easy-rsa
+
+- name: Copy OpenVPN server config
+  template:
+    src: "server.conf.j2"
+    dest: "/etc/openvpn/server.conf"
+  notify:
+    - Restart OpenVPN
+
+- name: Enable IP forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: "1"
+    state: present
+    reload: yes
+
+- name: Configure firewall to allow OpenVPN traffic
+  ufw:
+    rule: allow
+    name: "OpenVPN"
+    port: "{{ openvpn_port }}"
+    proto: "{{ openvpn_proto }}"
+
+- name: Start OpenVPN service
+  service:
+    name: openvpn@server
+    state: started
+    enabled: yes
