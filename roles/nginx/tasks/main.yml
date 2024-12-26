@@ -14,6 +14,7 @@
   template:
     src: default.j2
     dest: "{{ nginx_config_file }}"
+    validate: "nginx -t"
   notify: Restart Nginx
 
 - name: Ensure Nginx is started and enabled
