@@ -5,7 +5,6 @@ roles:
     scm: git
     version: lab2
 
-roles:
   - name: nginx
     src: https://github.com/confleux/devops-itmo.git
     scm: git
