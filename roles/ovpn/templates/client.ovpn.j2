@@ -12,14 +12,14 @@ key-direction 1
 tls-client
 remote-cert-tls server
 <ca>
-{{ lookup('file', '/etc/openvpn/easy-rsa/pki/ca.crt') }}
+{{ ca_cert.content | b64decode }}
 </ca>
 <cert>
-{{ lookup('file', '/etc/openvpn/easy-rsa/pki/issued/{{ openvpn_client_name }}.crt') }}
+{{ client_cert.content | b64decode }}
 </cert>
 <key>
-{{ lookup('file', '/etc/openvpn/easy-rsa/pki/private/{{ openvpn_client_name }}.key') }}
+{{ client_key.content | b64decode }}
 </key>
 <tls-auth>
-{{ lookup('file', '/etc/openvpn/easy-rsa/pki/ta.key') }}
+{{ ta_key.content | b64decode }}
 </tls-auth>

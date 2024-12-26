@@ -6,3 +6,5 @@ openvpn_port: 1194
 openvpn_proto: udp
 openvpn_network: "10.8.0.0 255.255.255.0"
 openvpn_push_route: "10.9.0.0 255.255.255.0"
+
+openvpn_path: "/etc/openvpn"
