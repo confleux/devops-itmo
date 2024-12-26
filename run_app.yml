@@ -2,6 +2,8 @@
 - name: Set up Django application
   hosts: app
   become: yes
+  roles:
+    - Docker
   vars:
     repo_url: "https://github.com/mdn/django-locallibrary-tutorial"
     repo_dest: "/opt/django-locallibrary"
