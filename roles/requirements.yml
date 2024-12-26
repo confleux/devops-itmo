@@ -1,0 +1,6 @@
+---
+roles:
+  - name: Docker
+    src: https://github.com/confleux/devops-itmo.git
+    scm: git
+    version: lab2
