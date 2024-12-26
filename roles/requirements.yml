@@ -9,3 +9,8 @@ roles:
     src: https://github.com/confleux/devops-itmo.git
     scm: git
     version: lab3
+
+  - name: openvpn
+    src: https://github.com/confleux/devops-itmo.git
+    scm: git
+    version: lab4
