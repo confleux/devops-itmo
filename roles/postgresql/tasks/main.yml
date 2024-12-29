@@ -1,5 +1,5 @@
 ---
-# tasks file for postgres
+# tasks file for postgresql
 - name: Install PostgreSQL packages
   apt:
     name: "{{ postgresql_packages }}"
@@ -22,10 +22,3 @@
     mode: 0644
   notify: Restart PostgreSQL
   become: true
-
-- name: Set PostgreSQL password for user
-  become_user: "{{ postgresql_user }}"
-  shell:
-    cmd: |
-      psql -c "ALTER USER {{ postgresql_user }} PASSWORD '{{ postgresql_password }}';"
-  when: postgresql_password is defined

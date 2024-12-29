@@ -1,5 +1,5 @@
 ---
-# handlers file for postgres
+# handlers file for postgresql
 - name: Restart PostgreSQL
   service:
     name: "{{ postgresql_service_name }}"
