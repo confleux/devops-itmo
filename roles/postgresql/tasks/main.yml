@@ -1,24 +1,13 @@
 ---
 # tasks file for postgresql
-- name: Install PostgreSQL packages
-  apt:
-    name: "{{ postgresql_packages }}"
-    state: present
-  become: true
+- name: Include installation tasks
+  include_tasks: install.yml
 
-- name: Ensure PostgreSQL is enabled and started
-  service:
-    name: "{{ postgresql_service_name }}"
-    state: started
-    enabled: true
-  become: true
+- name: Include configuration tasks
+  include_tasks: configure.yml
 
-- name: Configure PostgreSQL
-  template:
-    src: postgresql.conf.j2
-    dest: "{{ postgresql_data_dir }}/postgresql.conf"
-    owner: postgres
-    group: postgres
-    mode: 0644
-  notify: Restart PostgreSQL
-  become: true
+- name: Include database creation tasks
+  include_tasks: databases.yml
+
+- name: Include replication tasks
+  include_tasks: replication.yml

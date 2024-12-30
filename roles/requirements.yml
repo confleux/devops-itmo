@@ -18,8 +18,8 @@ roles:
     version: lab4
     path: roles/ovpn
 
-  - name: postgres
+  - name: postgresql
     src: https://github.com/confleux/devops-itmo.git
     scm: git
     version: lab5
-    path: roles/postgres
+    path: roles/postgresql
