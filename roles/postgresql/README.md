@@ -5,6 +5,12 @@
 * На реплике создается копия данных мастера с помощью команды `pg_basebackup`.
 *	Устанавливается файл `standby.signal`, который сообщает PostgreSQL, что это реплика
 
+Сетап:
+```bash
+vagrant up
+ansible-playbook -i replication-hosts.ini playbooks/setup_postgres.yml
+```
+
 Для теста создадим тестовую таблицу на `master`, запишем в нее данные:
 
 ```sql
